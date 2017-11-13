@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="card_radius">5dp</dimen>
-    <dimen name="card_elevation">10dp</dimen>
+    <dimen name="card_elevation">5dp</dimen>
 
+    <dimen name="margin_5dp">5dp</dimen>
     <dimen name="margin_16dp">16dp</dimen>
     <dimen name="margin_20dp">20dp</dimen>
     <dimen name="margin_30dp">30dp</dimen>

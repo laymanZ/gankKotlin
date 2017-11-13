@@ -22,6 +22,9 @@ class PictureAdapter(private val mData: List<PictureBean>,
 
     override fun onBindViewHolder(holder: PictureHolder, position: Int) {
         ImageUtil.loadLargeImg(mContext, holder.itemView.major_img, mData[0].results!![position].url)
+        ImageUtil.loadCircleImg(mContext, holder.itemView.picture_user_img, mData[0].results!![position].url)
+        holder.itemView.picture_user_name.text = mData[0].results!![position].who
+        holder.itemView.picture_create_time.text = filterStr(mData[0].results!![position].createdAt!!)
         AnimatorUtil.showItemAnim(holder.itemView, position)
     }
 
@@ -30,6 +33,10 @@ class PictureAdapter(private val mData: List<PictureBean>,
         return mData[0].results!!.size
     }
 
+    private fun filterStr(str: String): String {
+        val temp: List<String> = str.split("T")
+        return temp[0]
+    }
 
     class PictureHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)
 }

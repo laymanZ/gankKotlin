@@ -20,7 +20,7 @@ object ImageUtil {
 
     fun loadCircleImg(context: Context,
                       imageView: ImageView,
-                      url: String) {
+                      url: String?) {
         Glide.with(context)
                 .load(url)
                 .bitmapTransform(CropCircleTransformation(context))
