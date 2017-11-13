@@ -36,7 +36,7 @@ class VideoFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, DataList
     }
 
     override fun onFailed(msg: String) {
-        Toast.makeText(activity, "Video failed : ${msg}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, "Video failed : $msg", Toast.LENGTH_SHORT).show()
     }
 
 }

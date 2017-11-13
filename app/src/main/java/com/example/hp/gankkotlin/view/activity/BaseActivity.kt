@@ -6,7 +6,6 @@ import com.example.hp.gankkotlin.util.CacheUtil
 
 class BaseActivity : AppCompatActivity() {
 
-
     override fun onDestroy() {
         super.onDestroy()
         CacheUtil.disposalCache.clear()

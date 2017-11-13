@@ -47,6 +47,6 @@ class PictureFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, DataLi
     }
 
     override fun onFailed(msg: String) {
-        Toast.makeText(activity!!, "Picture failed : ${msg}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity!!, "Picture failed : $msg", Toast.LENGTH_SHORT).show()
     }
 }
