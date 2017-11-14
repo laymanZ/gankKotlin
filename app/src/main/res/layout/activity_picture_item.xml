@@ -77,7 +77,13 @@
                     android:layout_height="@dimen/margin_20dp"
                     android:layout_marginLeft="@dimen/margin_5dp"
                     android:layout_toRightOf="@id/picture_favorite"
-                    android:text="10,086 likes"/>
+                    android:text="12,345"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/margin_20dp"
+                    android:layout_toRightOf="@id/text_favorite_count"
+                    android:text=" likes"/>
 
                 <ImageView
                     android:id="@+id/picture_item_more"

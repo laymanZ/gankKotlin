@@ -14,6 +14,7 @@ public enum BaseUrlCache {
     {
         mCache.put("PICTURE_BASE_URL", "http://gank.io/api/random/data/福利/");
         mCache.put("VIDEO_BASE_URL", "http://gank.io/api/random/data/休息视频/");
+        mCache.put("OPEN_EYE_BASE_URL","http://baobab.kaiyanapp.com/api/");
     }
 
 

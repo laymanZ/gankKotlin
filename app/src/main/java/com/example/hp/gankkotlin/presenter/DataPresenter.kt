@@ -47,4 +47,8 @@ class DataPresenter(private val mDataListener: DataListener) {
                         { CacheUtil.disposalCache.add(it) }
                 )
     }
+
+    fun getOEIndexData(){
+
+    }
 }
