@@ -4,9 +4,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v7.widget.PopupMenu
+import android.view.*
 import android.widget.Toast
 import com.example.hp.gankkotlin.R
 import com.example.hp.gankkotlin.adapter.PictureAdapter
@@ -14,12 +13,15 @@ import com.example.hp.gankkotlin.bean.PictureBean
 import com.example.hp.gankkotlin.bean.VideoBean
 import com.example.hp.gankkotlin.listener.DataListener
 import com.example.hp.gankkotlin.presenter.DataPresenter
+import com.example.hp.gankkotlin.util.ImageUtil
 import kotlinx.android.synthetic.main.activity_picture.view.*
+import kotlinx.android.synthetic.main.activity_picture_item.view.*
 
 
 class PictureFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, DataListener {
 
     private lateinit var root: View
+    private lateinit var mPopMenu: PopupMenu
     private val mPresenter = DataPresenter(this)
 
 
@@ -31,10 +33,28 @@ class PictureFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, DataLi
 
     fun init() {
         mPresenter.getPictureData(10)
+        mPopMenu = PopupMenu(activity, root.picture_item_more)
+        mPopMenu.menuInflater.inflate(R.menu.picture_menu, mPopMenu.menu)
     }
 
     override fun onRefresh() {
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.picture_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        val id = item.itemId
+        when (id) {
+            R.id.save_pic -> ImageUtil.saveImageToGallery(activity, "")
+            else -> {
+                mPopMenu.dismiss()
+            }
+        }
+        return true
     }
 
     override fun onSuccessPicture(data: List<PictureBean>) {

@@ -1,6 +1,7 @@
 package com.example.hp.gankkotlin.adapter
 
 import android.content.Context
+import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +48,20 @@ class PictureAdapter(private val mData: List<PictureBean>,
                         .start()
             }
         }
+        val mPopMenu = PopupMenu(mContext, holder.itemView.picture_item_more)
+        mPopMenu.menuInflater.inflate(R.menu.picture_menu, mPopMenu.menu)
+        mPopMenu.setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.save_pic -> {
+                    ImageUtil.saveImageToGallery(mContext, mData[0].results!![position].url)
+                }
+                else -> {
+                    mPopMenu.dismiss()
+                }
+            }
+            false
+        }
+
         AnimatorUtil.showItemAnim(holder.itemView, position)
     }
 

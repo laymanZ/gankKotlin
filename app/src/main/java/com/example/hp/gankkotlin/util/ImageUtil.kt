@@ -37,7 +37,7 @@ object ImageUtil {
     }
 
 
-    fun saveImageToGallery(context: Context, url: String) {
+    fun saveImageToGallery(context: Context, url: String?) {
         Glide.with(context)
                 .load(url)
                 .asBitmap()
