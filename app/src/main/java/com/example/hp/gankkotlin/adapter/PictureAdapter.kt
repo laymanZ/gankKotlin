@@ -39,7 +39,7 @@ class PictureAdapter(private val mData: List<PictureBean>,
                         .setDuration(500)
                         .setInterpolator(AccelerateDecelerateInterpolator())
                         .setUpdateListener {
-                            if(i == 10){
+                            if (i == 10) {
                                 holder.itemView.text_favorite_count.text = calculateStr(text.toString())
                             }
                             i++

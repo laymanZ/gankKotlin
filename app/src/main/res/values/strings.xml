@@ -4,4 +4,6 @@
     <string name="picture_name">图片</string>
     <string name="video_name">视频</string>
     <string name="author_text">Author:</string>
+    <string name="fab_more_text">更多</string>
+    <string name="fab_hot_text">热门</string>
 </resources>

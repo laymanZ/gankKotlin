@@ -26,13 +26,54 @@
 
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/main_fab"
+    <View
+        android:id="@+id/main_cover_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cover"
+        android:fitsSystemWindows="true"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/main_fab_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/margin_16dp"
-        android:src="@drawable/ic_add_white_24dp"
-        app:fabSize="normal" />
+        android:orientation="vertical">
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/main_fab_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/margin_16dp"
+            android:src="@drawable/ic_more_white_24dp"
+            android:visibility="gone"
+            app:backgroundTint="@color/fab_more_bg"
+            app:fabSize="mini" />
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/main_fab_hot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_whatshot_white_24dp"
+            android:visibility="gone"
+            app:backgroundTint="@color/fab_hot_bg"
+            app:fabSize="mini" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/main_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/margin_16dp"
+            android:src="@drawable/ic_add_white_24dp"
+            app:fabSize="normal" />
+
+    </LinearLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>
