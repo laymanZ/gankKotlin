@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import com.example.hp.gankkotlin.util.CacheUtil
 
 
-class BaseActivity : AppCompatActivity() {
+open class BaseActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()

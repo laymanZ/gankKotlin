@@ -31,7 +31,7 @@ class VideoFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, DataList
 
     }
 
-    override fun onSuccessPicture(data: List<PictureBean>) {
+    override fun onSuccessPicture(data: List<PictureBean.ResultsBean>) {
 
     }
 
