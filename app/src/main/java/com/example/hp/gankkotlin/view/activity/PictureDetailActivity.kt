@@ -3,6 +3,7 @@ package com.example.hp.gankkotlin.view.activity
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import com.example.hp.gankkotlin.R
 import com.example.hp.gankkotlin.util.ImageUtil
@@ -14,6 +15,8 @@ class PictureDetailActivity:BaseActivity() {
     private val saveImgCode = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN)
         super.onCreate(savedInstanceState)
         initView()
         initControl()
