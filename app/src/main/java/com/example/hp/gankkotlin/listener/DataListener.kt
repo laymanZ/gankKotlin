@@ -8,7 +8,7 @@ interface DataListener {
 
     fun onSuccessVideo(data: List<VideoBean>)
 
-    fun onSuccessPicture(data: List<PictureBean>)
+    fun onSuccessPicture(data: List<PictureBean.ResultsBean>)
 
     fun onFailed(msg: String)
 

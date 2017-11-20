@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
+import android.widget.Toast
 import com.example.hp.gankkotlin.R
 import com.example.hp.gankkotlin.bean.PictureBean
 import com.example.hp.gankkotlin.util.AnimatorUtil
@@ -14,8 +15,9 @@ import com.example.hp.gankkotlin.util.ImageUtil
 import kotlinx.android.synthetic.main.activity_picture_item.view.*
 
 
-class PictureAdapter(private val mData: List<PictureBean>,
-                     private val mContext: Context) : RecyclerView.Adapter<PictureAdapter.PictureHolder>() {
+class PictureAdapter(private val mContext: Context) : RecyclerView.Adapter<PictureAdapter.PictureHolder>() {
+
+    private var  mData = mutableListOf<PictureBean.ResultsBean>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PictureHolder {
@@ -23,10 +25,10 @@ class PictureAdapter(private val mData: List<PictureBean>,
     }
 
     override fun onBindViewHolder(holder: PictureHolder, position: Int) {
-        ImageUtil.loadLargeImg(mContext, holder.itemView.major_img, mData[0].results!![position].url)
-        ImageUtil.loadCircleImg(mContext, holder.itemView.picture_user_img, mData[0].results!![position].url)
-        holder.itemView.picture_user_name.text = mData[0].results!![position].who
-        holder.itemView.picture_create_time.text = filterStr(mData[0].results!![position].createdAt!!)
+        ImageUtil.loadLargeImg(mContext, holder.itemView.major_img, mData[position].url)
+        ImageUtil.loadCircleImg(mContext, holder.itemView.picture_user_img, mData[position].url)
+        holder.itemView.picture_user_name.text = mData[position].who
+        holder.itemView.picture_create_time.text = filterStr(mData[position].createdAt!!)
         holder.itemView.picture_favorite.setOnClickListener {
             var i = 1
             it.animate()
@@ -48,26 +50,27 @@ class PictureAdapter(private val mData: List<PictureBean>,
                         .start()
             }
         }
-        val mPopMenu = PopupMenu(mContext, holder.itemView.picture_item_more)
-        mPopMenu.menuInflater.inflate(R.menu.picture_menu, mPopMenu.menu)
-        mPopMenu.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.save_pic -> {
-                    ImageUtil.saveImageToGallery(mContext, mData[0].results!![position].url)
+        holder.itemView.picture_item_more.setOnClickListener {
+            val mPopMenu = PopupMenu(mContext,it)
+            mPopMenu.menuInflater.inflate(R.menu.picture_menu, mPopMenu.menu)
+            mPopMenu.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.save_pic -> {
+                        ImageUtil.saveImageToGallery(mContext, mData[position].url)
+                    }
+                    else -> {
+                        mPopMenu.dismiss()
+                    }
                 }
-                else -> {
-                    mPopMenu.dismiss()
-                }
+                false
             }
-            false
+            mPopMenu.show()
         }
-
         AnimatorUtil.showItemAnim(holder.itemView, position)
     }
 
     override fun getItemCount(): Int {
-
-        return mData[0].results!!.size
+        return mData.size
     }
 
     private fun filterStr(str: String): String {
@@ -78,6 +81,12 @@ class PictureAdapter(private val mData: List<PictureBean>,
     private fun calculateStr(str: String): String {
         val temp: List<String> = str.split(",")
         return "${temp[0]},${temp[1].toInt() + 1}"
+    }
+
+    fun updateList(temp:List<PictureBean.ResultsBean>){
+        mData.addAll(temp)
+        notifyDataSetChanged()
+        Toast.makeText(mContext,mContext.resources.getString(R.string.update), Toast.LENGTH_SHORT).show()
     }
 
     class PictureHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)

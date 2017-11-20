@@ -10,6 +10,7 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.animation.GlideAnimation
 import com.bumptech.glide.request.target.SimpleTarget
+import com.example.hp.gankkotlin.R
 import jp.wasabeef.glide.transformations.CropCircleTransformation
 import java.io.File
 import java.io.FileOutputStream
@@ -45,7 +46,7 @@ object ImageUtil {
                 .into(object : SimpleTarget<Bitmap>() {
                     override fun onResourceReady(bitmap: Bitmap?, glideAnimation: GlideAnimation<in Bitmap>?) {
                         if (bitmap == null) {
-                            Toast.makeText(context, "图片保存失败", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context,context.resources.getString(R.string.pic_save_failed), Toast.LENGTH_SHORT).show()
                             return
                         }
                         if (!bitmap.isRecycled) {
@@ -74,7 +75,7 @@ object ImageUtil {
                                 bitmap.recycle()
                             }
                             MediaScannerConnection.scanFile(context, arrayOf(file.absolutePath), null, null)
-                            Toast.makeText(context, "图片保存成功", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, context.resources.getString(R.string.pic_save_success), Toast.LENGTH_SHORT).show()
                         }
                     }
                 })

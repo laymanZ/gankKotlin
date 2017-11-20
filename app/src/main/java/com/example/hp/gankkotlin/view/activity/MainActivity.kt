@@ -14,7 +14,7 @@ import com.example.hp.gankkotlin.view.fragment.PictureFragment
 import com.example.hp.gankkotlin.view.fragment.VideoFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private val mData = mutableListOf<Fragment>()
     private var mHasClick = false

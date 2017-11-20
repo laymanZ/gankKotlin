@@ -25,7 +25,7 @@ class DataPresenter(private val mDataListener: DataListener) {
                 .subscribe(
                         { result.add(it) },
                         { mDataListener.onFailed(it.message!!) },
-                        { mDataListener.onSuccessPicture(result) },
+                        { mDataListener.onSuccessPicture(result[0].results!!) },
                         { CacheUtil.disposalCache.add(it) }
                 )
     }
