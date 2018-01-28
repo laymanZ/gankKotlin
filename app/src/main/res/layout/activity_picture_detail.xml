@@ -16,6 +16,7 @@
         android:id="@+id/large_detail_photo_pic"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:transitionName="@string/transitionName"
         android:visibility="gone"/>
 
 </LinearLayout>

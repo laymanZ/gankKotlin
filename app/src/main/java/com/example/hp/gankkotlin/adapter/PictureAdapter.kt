@@ -1,6 +1,10 @@
 package com.example.hp.gankkotlin.adapter
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -12,12 +16,13 @@ import com.example.hp.gankkotlin.R
 import com.example.hp.gankkotlin.bean.PictureBean
 import com.example.hp.gankkotlin.util.AnimatorUtil
 import com.example.hp.gankkotlin.util.ImageUtil
+import com.example.hp.gankkotlin.view.activity.PictureDetailActivity
 import kotlinx.android.synthetic.main.activity_picture_item.view.*
 
 
 class PictureAdapter(private val mContext: Context) : RecyclerView.Adapter<PictureAdapter.PictureHolder>() {
 
-    private var  mData = mutableListOf<PictureBean.ResultsBean>()
+    private var mData = mutableListOf<PictureBean.ResultsBean>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PictureHolder {
@@ -50,13 +55,22 @@ class PictureAdapter(private val mContext: Context) : RecyclerView.Adapter<Pictu
                         .start()
             }
         }
+        holder.itemView.major_img.setOnClickListener {
+            val temp = mContext as Activity
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(temp, it,
+                    mContext.resources.getString(R.string.transitionName)).toBundle()
+            val intent = Intent(mContext, PictureDetailActivity::class.java)
+            intent.putExtra("imgUrl", mData[position].url)
+            ActivityCompat.startActivity(mContext, intent, options)
+
+        }
         holder.itemView.picture_item_more.setOnClickListener {
-            val mPopMenu = PopupMenu(mContext,it)
+            val mPopMenu = PopupMenu(mContext, it)
             mPopMenu.menuInflater.inflate(R.menu.picture_menu, mPopMenu.menu)
             mPopMenu.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.save_pic -> {
-                        ImageUtil.saveImageToGallery(mContext, mData[position].url)
+//                        ImageUtil.saveImageToGallery(mContext, mData[position].url)
                     }
                     else -> {
                         mPopMenu.dismiss()
@@ -83,10 +97,10 @@ class PictureAdapter(private val mContext: Context) : RecyclerView.Adapter<Pictu
         return "${temp[0]},${temp[1].toInt() + 1}"
     }
 
-    fun updateList(temp:List<PictureBean.ResultsBean>){
+    fun updateList(temp: List<PictureBean.ResultsBean>) {
         mData.addAll(temp)
         notifyDataSetChanged()
-        Toast.makeText(mContext,mContext.resources.getString(R.string.update), Toast.LENGTH_SHORT).show()
+        Toast.makeText(mContext, mContext.resources.getString(R.string.update), Toast.LENGTH_SHORT).show()
     }
 
     class PictureHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)

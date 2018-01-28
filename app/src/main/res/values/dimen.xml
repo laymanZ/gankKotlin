@@ -10,4 +10,8 @@
     <dimen name="margin_24dp">24dp</dimen>
     <dimen name="margin_30dp">30dp</dimen>
     <dimen name="margin_40dp">40dp</dimen>
+    <dimen name="margin_160dp">160dp</dimen>
+
+    <!--字体-->
+    <dimen name="font_18">18sp</dimen>
 </resources>

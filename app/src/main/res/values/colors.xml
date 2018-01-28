@@ -6,4 +6,5 @@
     <color name="cover">#80FFFFFF</color>
     <color name="fab_more_bg">#00ff04</color>
     <color name="fab_hot_bg">#00ccff</color>
+    <color name="cover_bg">#88000000</color>
 </resources>

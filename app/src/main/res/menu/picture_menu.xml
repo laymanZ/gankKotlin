@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/save_pic"
-        android:title="@string/save_picture" />
+        android:title="@string/collect_picture" />
 
     <item
         android:id="@+id/cancel_menu"

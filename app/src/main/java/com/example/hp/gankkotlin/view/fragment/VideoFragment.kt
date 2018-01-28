@@ -10,10 +10,10 @@ import android.widget.Toast
 import com.example.hp.gankkotlin.R
 import com.example.hp.gankkotlin.bean.PictureBean
 import com.example.hp.gankkotlin.bean.VideoBean
-import com.example.hp.gankkotlin.listener.DataListener
+import com.example.hp.gankkotlin.listener.BaseDataListener
 
 
-class VideoFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, DataListener {
+class VideoFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener {
 
 
     private lateinit var root: View
@@ -27,16 +27,5 @@ class VideoFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, DataList
 
     }
 
-    override fun onSuccessVideo(data: List<VideoBean>) {
-
-    }
-
-    override fun onSuccessPicture(data: List<PictureBean.ResultsBean>) {
-
-    }
-
-    override fun onFailed(msg: String) {
-        Toast.makeText(activity, "Video failed : $msg", Toast.LENGTH_SHORT).show()
-    }
 
 }

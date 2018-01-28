@@ -6,10 +6,11 @@
     <string name="author_text">Author:</string>
     <string name="fab_more_text">更多</string>
     <string name="fab_hot_text">热门</string>
-    <string name="save_picture">保存图片</string>
+    <string name="collect_picture">收藏图片</string>
     <string name="cancel">取消</string>
     <string name="update">数据已更新</string>
     <string name="pic_save_success">图片保存成功</string>
     <string name="pic_save_failed">图片保存失败</string>
     <string name="pic_per_request_fail">权限申请失败，无法进行图片保存</string>
+    <string name="transitionName">largeImage</string>
 </resources>

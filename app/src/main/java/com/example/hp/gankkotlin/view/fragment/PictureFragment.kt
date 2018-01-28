@@ -10,16 +10,16 @@ import android.widget.Toast
 import com.example.hp.gankkotlin.R
 import com.example.hp.gankkotlin.adapter.PictureAdapter
 import com.example.hp.gankkotlin.bean.PictureBean
-import com.example.hp.gankkotlin.bean.VideoBean
-import com.example.hp.gankkotlin.listener.DataListener
-import com.example.hp.gankkotlin.presenter.DataPresenter
+import com.example.hp.gankkotlin.listener.PictureDataListener
+import com.example.hp.gankkotlin.presenter.PictureDataPresenter
 import kotlinx.android.synthetic.main.activity_picture.view.*
 
 
-class PictureFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, DataListener {
+class PictureFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, PictureDataListener {
+
 
     private lateinit var root: View
-    private val mPresenter = DataPresenter(this)
+    private val mPresenter = PictureDataPresenter(this)
     private val mPictureCount = 10
 
 
@@ -45,7 +45,8 @@ class PictureFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, DataLi
         inflater.inflate(R.menu.picture_menu, menu)
     }
 
-    override fun onSuccessPicture(data: List<PictureBean.ResultsBean>) {
+
+    override fun onSuccess(data: List<PictureBean.ResultsBean>) {
         val pictureAdapter = PictureAdapter(activity)
         root.picture_recycler.adapter = pictureAdapter
         root.picture_recycler.layoutManager = LinearLayoutManager(activity)
@@ -53,13 +54,9 @@ class PictureFragment : Fragment(), SwipeRefreshLayout.OnRefreshListener, DataLi
         val anim = DefaultItemAnimator()
         anim.addDuration = 500
         root.picture_recycler.itemAnimator = anim
-        if(root.picture_refresh.isRefreshing){
+        if (root.picture_refresh.isRefreshing) {
             root.picture_refresh.isRefreshing = false
         }
-    }
-
-    override fun onSuccessVideo(data: List<VideoBean>) {
-
     }
 
     override fun onFailed(msg: String) {
