@@ -4,6 +4,7 @@
     <dimen name="card_elevation">5dp</dimen>
 
     <dimen name="margin_5dp">5dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
     <dimen name="margin_10dp">10dp</dimen>
     <dimen name="margin_16dp">16dp</dimen>
     <dimen name="margin_20dp">20dp</dimen>
@@ -11,7 +12,11 @@
     <dimen name="margin_30dp">30dp</dimen>
     <dimen name="margin_40dp">40dp</dimen>
     <dimen name="margin_160dp">160dp</dimen>
+    <dimen name="margin_200dp">200dp</dimen>
+    <dimen name="margin_250dp">250dp</dimen>
 
     <!--字体-->
     <dimen name="font_18">18sp</dimen>
+    <dimen name="font_20">20sp</dimen>
+    <dimen name="font_22">22sp</dimen>
 </resources>

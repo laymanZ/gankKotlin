@@ -6,6 +6,8 @@ import com.example.hp.gankkotlin.bean.OEHotBean;
 import com.example.hp.gankkotlin.bean.PictureBean;
 import com.example.hp.gankkotlin.bean.VideoBean;
 
+import java.util.List;
+
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -38,8 +40,9 @@ public interface NetService {
 
 
     //获取开眼发现频道信息
-    @GET("v2/categories?udid=26868b32e808498db32fd51fb422d00175e179df&vc=83")
-    Observable<OEFindBean> getOEFindData();
+    @GET("v2/categories")
+    Observable<List<OEFindBean>> getOEFindData(@Query("udid") String udid,
+                                               @Query("vc") int vc);
 
 
     //获取开眼热门排行信息
